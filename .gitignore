@@ -1,0 +1,24 @@
+# java class
+*.class
+*.jar
+
+# application files
+*.apk
+*.ap_
+
+# dex VM
+*.dex
+
+# generate files
+bin/
+gen/
+
+/.settings/
+/proguard/
+/target/
+
+# eclipse project files
+.classpath
+.project
+.DS_Store
+

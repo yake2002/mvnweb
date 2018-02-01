@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.bbs.dao.mapper.UserMapper">
+
+
+
+	<select id="getMatchCount" parameterType="com.bbs.domain.User"
+		resultType="java.lang.Integer">
+		SELECT count(*)
+		FROM
+		t_user
+		WHERE
+		user_name=#{userName}
+		and password=#{password}
+	</select>
+
+
+
+	<select id="findUserByUserName" parameterType="com.bbs.domain.User"
+		resultType="com.bbs.domain.User">
+		SELECT
+		t_user.user_id as userId,
+		t_user.user_name as userName,
+		t_user.credits as credits,
+		t_user.password as password,
+		t_user.last_ip as lastIp,
+		t_user.last_visit as lastVisit
+
+		FROM
+		t_user
+		WHERE
+		user_name=#{userName}
+	</select>
+
+	<update id="updateLoginInfo" parameterType="com.bbs.domain.User">
+
+		UPDATE t_user
+		<set>
+			<if test="lastVisit !=null">
+				last_visit = #{lastVisit},
+			</if>
+			<if test="lastIp !=null and lastIp !=''">
+				last_ip = #{lastIp},
+			</if>
+			<if test="credits !=null and credits !=''">
+				credits = #{credits},
+			</if>
+		</set>
+		where user_id=#{userId}
+	</update>
+
+
+
+	<insert id="insertUser" parameterType="com.bbs.domain.User">
+		insert into t_user(
+		user_name,
+		credits,
+		password,
+		last_ip,
+		last_visit
+		)
+
+		values(
+		#{userName},
+		#{credits},
+		#{password},
+		#{lastIp},
+		#{lastVisit}
+		)
+	</insert>
+
+	<update id="updateUserInfo" parameterType="com.bbs.domain.User">
+		UPDATE t_user
+		<set>
+			<if test="lastVisit !=null">
+				last_visit = #{lastVisit},
+			</if>
+			<if test="lastIp !=null and lastIp !=''">
+				last_ip = #{lastIp},
+			</if>
+			<if test="credits !=null and credits !=''">
+				credits = #{credits},
+			</if>
+		</set>
+		where user_id=#{userId}
+	</update>
+
+</mapper>
