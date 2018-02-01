@@ -37,6 +37,7 @@
 	        <groupId>mysql</groupId>
 	        <artifactId>mysql-connector-java</artifactId>
 	        <version>5.1.19</version>
+	        <!-- <version>5.6.38</version> -->
 	    </dependency>
 		<dependency>  
 		    <groupId>org.slf4j</groupId>  
@@ -125,7 +126,8 @@
 				<version>2.1</version>
 				<configuration>
 					<port>8080</port>
-					<path>/mvnweb/login.do</path>
+					<path>/mvnweb</path>
+					<url>http://localhost:8080/mvnweb/login.do</url>
 					<uriEncoding>UTF-8</uriEncoding>
 					<finalName>mvnweb</finalName>
 					<server>tomcat7</server>
